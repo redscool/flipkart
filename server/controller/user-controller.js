@@ -1,9 +1,9 @@
 import pool from "../database/db.js";
 
 export const userLogIn = (request, response) => {
-  const username = request.body.username;
+  const username = request.body.email;
   const password = request.body.password;
-  const query = "select * from users where username = ? and password = ?";
+  const query = "select * from users where email = ? and password = ?";
   pool.query(query, [username, password], (error, result) => {
     if (error)
       return response.status(401).send({ message: error, success: false });

@@ -4,7 +4,7 @@ const url = config.url;
 
 export const authenticateLogin = async (user) => {
   axios.post(`${url}/login`, user).then((response) => {
-    console(response);
+    console.log(response);
   });
 };
 

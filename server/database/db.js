@@ -1,10 +1,10 @@
 import mysql from "mysql";
-
-// mongodb clould connection for database, thos function takes the username and password from the dot env file
+import dotenv from "dotenv";
+dotenv.config();
 const pool = mysql.createPool({
-  host: "sql6.freemysqlhosting.net",
-  user: "sql6499076",
-  password: "uDSmRgKWEs",
-  database: "sql6499076",
+  host: process.env.HOST,
+  user: process.env.USER,
+  password: process.env.PASSWORD,
+  database: process.env.DATABASE,
 });
 export default pool;
