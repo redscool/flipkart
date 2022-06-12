@@ -29,10 +29,7 @@ const useStyle = makeStyles(theme => ({
         color: '#7f7f7f',
         marginLeft: 10,
         display: 'flex',
-        alignItems: 'center',
-        [theme.breakpoints.down('sm')]: {
-            display: 'none'
-        }
+        alignItems: 'center'
     },
     image: {
         width: 'auto',
@@ -61,10 +58,15 @@ const useStyle = makeStyles(theme => ({
     wrapper: {
         padding: '25px 15px'
     },
-    
+    timer: {
+        [theme.breakpoints.down('sm')]: {
+            display: 'none'
+        }
+    }
 }));
 
 const MultiSlide = ({ data, timer, title }) => {
+    console.log(data)
     const classes = useStyle();
     const timerURL = 'https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/timer_a73398.svg';
 
@@ -104,10 +106,9 @@ const MultiSlide = ({ data, timer, title }) => {
                     data.map(temp => (
                         <Link to={`product/${temp.id}`} style={{textDecoration: 'none'}}>
                             <Box textAlign="center" className={classes.wrapper}>
-                                <img src={temp.url} className={classes.image} alt="" />
-                                <Typography className={classes.text} style={{ fontWeight: 600, color: '#212121' }}>{temp.title.shortTitle}</Typography>
-                                <Typography className={classes.text} style={{ color: 'green' }}>{temp.discount}</Typography>
-                                <Typography className={classes.text} style={{ color: '#212121', opacity: '.6' }}>{temp.tagline}</Typography>
+                                <img src={temp.url} className={classes.image} />
+                                <Typography className={classes.text} style={{ fontWeight: 600, color: '#212121' }}>{temp.name}</Typography>
+                                {/* <Typography className={classes.text} style={{ color: '#212121', opacity: '.6' }}>{temp.tagline}</Typography> */}
                             </Box>
                         </Link>
                     ))

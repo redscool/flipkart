@@ -1,0 +1,66 @@
+.buttons {
+  display: flex;
+  flex-direction: row;
+}
+.addCat {
+  width: 10vw;
+  height: 5vh;
+  background-color: rgba(0, 0, 255, 0.693);
+  margin: 3vh auto;
+  cursor: pointer;
+  display: flex;
+}
+
+.addCat > p {
+  margin: auto;
+}
+
+.edit {
+  width: 10vw;
+  height: 5vh;
+  background-color: rgba(0, 0, 255, 0.693);
+  display: flex;
+  cursor: pointer;
+
+  margin: 3vh auto;
+}
+
+.edit > p {
+  margin: auto;
+}
+
+.addProduct {
+  width: 10vw;
+  cursor: pointer;
+  height: 5vh;
+  background-color: rgba(0, 0, 255, 0.693);
+  display: flex;
+  margin: 3vh auto;
+}
+
+.addProduct > p {
+  margin: auto;
+}
+
+.mainCtn {
+  display: flex;
+  flex-direction: column;
+}
+
+.mainCtn > input {
+  height: 4vh;
+  width: 20vw;
+  margin: 2vh auto;
+}
+
+.save {
+  display: flex;
+  background-color: blue;
+  width: 5vw;
+  height: 4vh;
+  margin: 1vh auto;
+}
+.save > p {
+  color: aliceblue;
+  margin: auto;
+}

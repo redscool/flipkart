@@ -1,11 +1,12 @@
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import { Home, NotFound } from './Components/default';
-import Header from './Components/Header/Header';
-import DetailView from './Components/ItemDetails/DetailView';
-import TemplateProvider from './templates/TemplateProvider';
-import ContextProvider from './context/ContextProvider';
-import Cart from './Components/Cart/Cart';
-import { Box } from '@material-ui/core'
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { Home, NotFound } from "./Components/default";
+import Header from "./Components/Header/Header";
+import DetailView from "./Components/ItemDetails/DetailView";
+import TemplateProvider from "./templates/TemplateProvider";
+import ContextProvider from "./context/ContextProvider";
+import Cart from "./Components/Cart/Cart";
+import { Box } from "@material-ui/core";
+import Admin from "./Components/Admin";
 
 function App() {
   return (
@@ -13,12 +14,13 @@ function App() {
       <ContextProvider>
         <BrowserRouter>
           <Header />
-          <Box style={{marginTop: 54}}>
+          <Box style={{ marginTop: 54 }}>
             <Switch>
-              <Route exact path= '/' component={Home} />
-              <Route exact path= '/cart' component={Cart} />
+              <Route exact path="/" component={Home} />
+              <Route exact path="/cart" component={Cart} />
               {/* <Route exact path= '/product/:id' component={Product} /> */}
-              <Route exact path= '/product/:id' component={DetailView} />
+              <Route exact path="/product/:id" component={DetailView} />
+              <Route exact path="/admin" component={Admin} />
               <Route component={NotFound} />
             </Switch>
           </Box>

@@ -45,6 +45,18 @@ const useStyle = makeStyles(theme => ({
         [theme.breakpoints.down('sm')]: {
             display: 'none'
         } 
+    },
+    adminBtn:{
+        margin: '0 0 0 6vw',
+        backgroundColor: "white",
+        height: '4.5vh',
+        width: '5vw',
+        display:"flex"
+    },
+    admin:{
+        margin: "auto",
+        color: "blue",
+        fontWeight : "600"
     }
 }));
 
@@ -103,6 +115,8 @@ const Header = () => {
                     </Box>
                 </Link>
                 <Search />
+                <Link to = '/admin'>
+                <div className={classes.adminBtn}><p className={classes.admin}>Admin</p></div> </Link>
                 <span className={classes.customButtons}><CustomButtons /></span>
             </ToolBar>
         </AppBar>

@@ -48,14 +48,14 @@ const CartItem = ({ item, removeItemFromCart }) => {
                 <GroupButton />
             </Box>
             <Box className={classes.mid}>
-                <Typography>{item.title.longTitle}</Typography>
+                <Typography>{item.name}</Typography>
                 <Typography className={clsx(classes.greyTextColor, classes.smallText)} style={{ marginTop: 10 }}>Seller:RetailNet
                     <span><img src={fassured} style={{ width: 50, marginLeft: 10 }} alt="" /></span>
                 </Typography>
                 <Typography style={{margin: '20px 0'}}>
-                    <span className={classes.price}>₹{item.price.cost}</span>&nbsp;&nbsp;&nbsp;
-                    <span className={classes.greyTextColor}><strike>₹{item.price.mrp}</strike></span>&nbsp;&nbsp;&nbsp;
-                    <span style={{ color: '#388E3C' }}>{item.price.discount} off</span>
+                    <span className={classes.price}>₹{item[0].sellingPrice}</span>&nbsp;&nbsp;&nbsp;
+                    <span className={classes.greyTextColor}><strike>₹{item.mrp}</strike></span>&nbsp;&nbsp;&nbsp;
+                    <span style={{ color: '#388E3C' }}>0% off</span>
                 </Typography>
                 <Button className={classes.remove} onClick={() => removeItemFromCart(item.id)}>Remove</Button>
             </Box>

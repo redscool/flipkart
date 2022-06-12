@@ -1,12 +1,14 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import config from "../config.json";
 
 function Razorpay() {
   const [loading, setLoading] = useState(false);
   const [orderAmount, setOrderAmount] = useState(0);
   const [orders, setOrders] = useState([]);
 
-  const url = 'http://localhost:8000';
+  // const url = 'http://localhost:8000';
+  const url = config.url;
 
   async function fetchOrders() {
     const { data } = await axios.get(`${url}/pay-res`);
@@ -17,11 +19,11 @@ function Razorpay() {
     fetchOrders();
   }, []);
 
-  const loadRazorpay=()=> {
-    const script = document.createElement('script');
-    script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+  const loadRazorpay = () => {
+    const script = document.createElement("script");
+    script.src = "https://checkout.razorpay.com/v1/checkout.js";
     script.onerror = () => {
-      alert('Razorpay SDK failed to load. Are you online?');
+      alert("Razorpay SDK failed to load. Are you online?");
     };
     script.onload = async () => {
       try {
@@ -33,13 +35,13 @@ function Razorpay() {
         const {
           data: { key: razorpayKey },
         } = await axios.get(`${url}/get-razorpay-key`);
- 
+
         const options = {
           key: razorpayKey,
           amount: orderAmount.toString(),
           currency: currency,
-          name: 'example name',
-          description: 'example transaction',
+          name: "example name",
+          description: "example transaction",
           order_id: order_id,
           handler: async function (response) {
             const result = await axios.post(`${url}/pay-order`, {
@@ -53,15 +55,15 @@ function Razorpay() {
             fetchOrders();
           },
           prefill: {
-            name: 'example name',
-            email: 'email@example.com',
-            contact: '111111',
+            name: "example name",
+            email: "email@example.com",
+            contact: "111111",
           },
           notes: {
-            address: 'example address',
+            address: "example address",
           },
           theme: {
-            color: '#80c0f0',
+            color: "#80c0f0",
           },
         };
 
@@ -74,7 +76,7 @@ function Razorpay() {
       }
     };
     document.body.appendChild(script);
-  }
+  };
 
   return (
     <div className="App">
@@ -83,7 +85,7 @@ function Razorpay() {
       <div>
         <h2> Pay Order</h2>
         <label>
-          Amount:{' '}
+          Amount:{" "}
           <input
             placeholder="INR"
             type="number"
@@ -113,7 +115,7 @@ function Razorpay() {
               <tr key={x._id}>
                 <td>{x._id}</td>
                 <td>{x.amount / 100}</td>
-                <td>{x.isPaid ? 'YES' : 'NO'}</td>
+                <td>{x.isPaid ? "YES" : "NO"}</td>
                 {/* <td>{x.razorpay.paymentId}</td> */}
               </tr>
             ))}

@@ -1,14 +1,10 @@
-import mongoose from 'mongoose';
+import mysql from "mysql";
 
-const Connection = async (username, password) => {
-        const URL = `mongodb+srv://${username}:${password}@cluster0.jjowu.mongodb.net/flipkart?retryWrites=true&w=majority`;
-    try {
-        await mongoose.connect(URL, { useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: false });
-        console.log('Database Connected Succesfully');
-    } catch(error) {
-        console.log('Error: ', error.message);
-    }
-
-};
-
-export default Connection;
+// mongodb clould connection for database, thos function takes the username and password from the dot env file
+const pool = mysql.createPool({
+  host: "sql6.freemysqlhosting.net",
+  user: "sql6499076",
+  password: "uDSmRgKWEs",
+  database: "sql6499076",
+});
+export default pool;
